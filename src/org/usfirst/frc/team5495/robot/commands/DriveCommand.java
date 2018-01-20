@@ -25,17 +25,17 @@ public class DriveCommand extends Command {
 	protected void execute() {
 		double rotateValue = Robot.oi.driveStick.getAxis(RobotMap.ROTATE_AXIS);
 		double moveValue = Robot.oi.driveStick.getAxis(RobotMap.MOVE_AXIS);
-		double cubicTrim = -Robot.oi.driveStick.getRawAxis(3);
-		cubicTrim = (cubicTrim + 1) / 2.0;
+		double cubicTrim = 1; //-Robot.oi.driveStick.getRawAxis(3);
+		//cubicTrim = (cubicTrim + 1) / 2.0;
 		//System.out.format("CubicTrim: %f", cubicTrim);
 		
 		
 		Robot.driveSubsystem.arcadeDrive(moveValue, rotateValue, cubicTrim);
 		boolean buttonA = Robot.oi.driveStick.getRawButton(RobotMap.GEAR_BUTTON);
-		Robot.driveSubsystem.SetGear(buttonA ? 1: 0);
-		if (!buttonA) {
-			rotateValue *= 0.5;
-		}
+		Robot.driveSubsystem.SetGear(buttonA ? 0: 1);
+		//System.out.format("Encoder: %f\n", Robot.driveSubsystem.getDistance(0));
+		rotateValue *= 0.1;
+		
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -43,7 +43,6 @@ public class DriveCommand extends Command {
 	protected boolean isFinished() {
 		return false;
 	}
-
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {

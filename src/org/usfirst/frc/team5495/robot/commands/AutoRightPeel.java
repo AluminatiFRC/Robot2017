@@ -18,13 +18,12 @@ public class AutoRightPeel extends CommandGroup {
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
-    	
-    	addSequential(new ForwardByDistanceCommand(-(75.019 / 12) - 3));
+    	addSequential(new ForwardByDistanceCommand(-(48.0 / 12)));
     	addSequential(new TurnByDegreesCommand(103.75, false));
     	//addParallel( new ResetGyroCommand());
-    	addSequential(new ForwardByDistanceCommand(-(79.054 / 12) - 3));
+    	addSequential(new ForwardByDistanceCommand(-(70 / 12)));
     	addSequential(new WaitCommand(3));
-    	addSequential(new PeelAwayCommand(120, false));
+    	addSequential(new Legacy(125, false, .75));
     	//addParallel(new ResetGyroCommand());
 
         // A command group will require all of the subsystems that each member

@@ -7,11 +7,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ReverseDriveCommand extends Command {
+public class FullStopCommand extends Command {
 
-    public ReverseDriveCommand() {
+    public FullStopCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.driveSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -20,22 +21,20 @@ public class ReverseDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-		Robot.driveSubsystem.SetReverseDrive(false);
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driveSubsystem.SetReverseDrive(true);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }

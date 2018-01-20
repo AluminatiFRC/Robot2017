@@ -36,7 +36,7 @@ public class DriveSubsystem extends Subsystem {
 			Encoder.EncodingType.k4X);
 	public final Encoder rightEnc = new Encoder(RobotMap.RIGHT_ENCODER_FIRST, RobotMap.RIGHT_ENCODER_SECOND, false,
 			Encoder.EncodingType.k4X);
-	boolean isReverseEnabled = false;
+	boolean isReverseEnabled = true;
 	boolean isCrawlEnabled = false;
 	double crawlTrim = 1;
 
@@ -69,9 +69,10 @@ public class DriveSubsystem extends Subsystem {
 	public void arcadeDrive(double moveValue, double rotateValue, double cubicTrim) {
 		//System.out.format("Steering Input: %f %f\r\n", moveValue, rotateValue);
 
-		//System.out.format("Left: %f (%f) [%d] Right: %f (%f) [%d]\r\n",
-		//		leftEnc.getRate(), leftEnc.getDistance(), leftEnc.getRaw(),
-		//		rightEnc.getRate(), rightEnc.getDistance(), rightEnc.getRaw());		
+		System.out.format("Left: %f (%f) [%d] Right: %f (%f) [%d] - Reversed: %s\r\n",
+				leftEnc.getRate(), leftEnc.getDistance(), leftEnc.getRaw(),
+				rightEnc.getRate(), rightEnc.getDistance(), rightEnc.getRaw(),
+				this.isReverseEnabled ? "true" : "false");		
 		if (isReverseEnabled == true) {
 			moveValue = -moveValue;
 		}

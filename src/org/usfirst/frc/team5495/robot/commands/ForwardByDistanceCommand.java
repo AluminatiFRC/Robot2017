@@ -12,6 +12,7 @@ import org.usfirst.frc.team5495.robot.Robot;
  **/
  
 public class ForwardByDistanceCommand extends Command {
+	final double DRIFT_CORRECTION = -0.01;
 	final double MOVE_SPEED = 1;
 	final long SLERP_DURATION = 500;
 	final double STOPPING_DISTANCE = 1;
@@ -48,6 +49,8 @@ public class ForwardByDistanceCommand extends Command {
     		this.decellerationDistance = this.targetDistance + STOPPING_DISTANCE;
     	}
     	lerpStartTime = System.currentTimeMillis();
+		System.out.format("Init -- Move: %f Start: %f\n", this.startDistance, this.moveDistance);
+		System.out.format("Init -- Target: %f Actual: %f\n", this.targetDistance, Robot.driveSubsystem.getDistance(0));
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -87,8 +90,8 @@ public class ForwardByDistanceCommand extends Command {
     		speed = -MOVE_SPEED * interpolation;
     	}
     	
-		Robot.driveSubsystem.arcadeDrive(speed, 0);
-		//System.out.format("Target: %f Actual: %f\n", this.targetDistance, Robot.driveSubsystem.getDistance(0));
+		Robot.driveSubsystem.arcadeDrive(speed, DRIFT_CORRECTION);
+		System.out.format("Target: %f Actual: %f\n", this.targetDistance, Robot.driveSubsystem.getDistance(0));
     }
 
     // Make this return true when this Command no longer needs to run execute()

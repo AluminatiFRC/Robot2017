@@ -13,15 +13,14 @@ public class AutoCenterPeelLeft extends CommandGroup {
         //      addSequential(new Command2());
         // these will run in order.
 
-        // To run multiple commands at the same time,
         // use addParallel()
-        // e.g. addParallel(new Command1());
+        // e.g. addParallel(new Command1());               
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
 
-    	addSequential(new ForwardByDistanceCommand((-70.39 / 12) - 3));
+    	addSequential(new ForwardByDistanceCommand(-58.0 / 12));
     	addSequential(new WaitCommand(3));
-    	addSequential(new PeelAwayCommand(120, true));
+    	addSequential(new Legacy(120, true, .75));
     	//addParallel(new ResetGyroCommand());
     	addSequential(new ForwardByDistanceCommand(3));
     	

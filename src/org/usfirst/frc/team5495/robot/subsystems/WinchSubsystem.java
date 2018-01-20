@@ -14,7 +14,7 @@ public class WinchSubsystem extends Subsystem {
 	}
 	
 	public void RotateWinch() {
-	    motor1.set(-.75);
+	    motor1.set(-1.0);
 	}
 	
 	public void StopWinch() {

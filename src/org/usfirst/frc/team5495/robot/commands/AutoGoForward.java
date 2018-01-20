@@ -1,24 +1,18 @@
 package org.usfirst.frc.team5495.robot.commands;
 
-import org.usfirst.frc.team5495.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class AutoCenterPeelRight extends CommandGroup {
+public class AutoGoForward extends CommandGroup {
 
-    public AutoCenterPeelRight() {
+    public AutoGoForward() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	addSequential(new ForwardByDistanceCommand(-58.0 / 12));
-    	addSequential(new WaitCommand(3));
-    	addSequential(new Legacy(120, false, .75));
-    	//addParallel(new ResetGyroCommand());
-    	addSequential(new ForwardByDistanceCommand(3));
+    	addSequential(new ForwardByDistanceCommand(-20));
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());

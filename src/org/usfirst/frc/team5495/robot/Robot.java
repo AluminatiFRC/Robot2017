@@ -14,10 +14,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5495.robot.commands.ForwardByDistanceCommand;
-import org.usfirst.frc.team5495.robot.commands.PeelAwayCommand;
+import org.usfirst.frc.team5495.robot.commands.Legacy;
 import org.usfirst.frc.team5495.robot.commands.AutoCenterPeelLeft;
 import org.usfirst.frc.team5495.robot.commands.AutoCenterPeelRight;
 import org.usfirst.frc.team5495.robot.commands.AutoCenterStay;
+import org.usfirst.frc.team5495.robot.commands.AutoGoForward;
 import org.usfirst.frc.team5495.robot.commands.AutoLeftPeel;
 import org.usfirst.frc.team5495.robot.commands.AutoLeftStay;
 import org.usfirst.frc.team5495.robot.commands.AutoRightPeel;
@@ -74,6 +75,7 @@ public class Robot extends IterativeRobot {
 		
 		chooser.addDefault("Center, Peel Left", new AutoCenterPeelLeft());
 		chooser.addDefault("Center, Peel Right", new AutoCenterPeelRight());
+		chooser.addObject("Straight Forward", new AutoGoForward());
 		SmartDashboard.putData("Auto mode", chooser);
 }
 
@@ -137,6 +139,7 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		
 	}
 
 	/**

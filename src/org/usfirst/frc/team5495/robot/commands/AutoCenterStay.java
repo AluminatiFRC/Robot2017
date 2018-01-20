@@ -19,7 +19,7 @@ public class AutoCenterStay extends CommandGroup {
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
     	
-    	addSequential(new ForwardByDistanceCommand(-(70.39 / 12)));
+    	addSequential(new ForwardByDistanceCommand(-(83.0 - 11) / 12));
 
         // A command group will require all of the subsystems that each member
         // would require.

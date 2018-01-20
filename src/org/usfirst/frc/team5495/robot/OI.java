@@ -9,8 +9,11 @@ import org.usfirst.frc.team5495.robot.commands.CrawlModeCommand;
 import org.usfirst.frc.team5495.robot.commands.DispenseSolidFuelCommand;
 import org.usfirst.frc.team5495.robot.commands.DriveCommand;
 import org.usfirst.frc.team5495.robot.commands.EjectCommand;
+import org.usfirst.frc.team5495.robot.commands.FullStopCommand;
+import org.usfirst.frc.team5495.robot.commands.Legacy;
 import org.usfirst.frc.team5495.robot.commands.TurnByDegreesCommand;
 import org.usfirst.frc.team5495.robot.commands.ReverseDriveCommand;
+import org.usfirst.frc.team5495.robot.commands.RotateByTimeCommand;
 import org.usfirst.frc.team5495.robot.commands.WinchCommand;
 
 /**
@@ -25,18 +28,20 @@ public class OI {
 	// number it is.
 	public Joystick driveStick = new Joystick(RobotMap.JOYSTICK_DRIVE_PORT);
 	Button HalfTurnButton = new JoystickButton(driveStick, RobotMap.HALF_TURN_BUTTON);
-	Button DispenseButton = new JoystickButton(driveStick, RobotMap.COLLECT_BUTTON);
-	Button CollectButton = new JoystickButton(driveStick, RobotMap.DISPENSE_BUTTON);
+	//Button DispenseButton = new JoystickButton(driveStick, RobotMap.COLLECT_BUTTON);
+	//Button CollectButton = new JoystickButton(driveStick, RobotMap.DISPENSE_BUTTON);
 	Button ReverseButton = new JoystickButton(driveStick, RobotMap.REVERSE_BUTTON);
 	Button CrawlButton = new JoystickButton(driveStick, RobotMap.CRAWL_BUTTON);
 	Button WinchButton = new JoystickButton(driveStick, RobotMap.WINCH_BUTTON);
-	Button EjectButton = new JoystickButton(driveStick, RobotMap.EJECT_BUTTON);
+	Button StopButton = new JoystickButton(driveStick, RobotMap.EJECT_BUTTON);
+	Button TurnButton = new JoystickButton(driveStick, RobotMap.TURN_BUTTON);
 
 	public Joystick controllStick = new Joystick(RobotMap.JOYSTICK_CONTROL_PORT);
-	Button ControlCollectButton = new JoystickButton(controllStick, RobotMap.SECONDARY_COLLECT_BUTTON);
-	Button ControlDispenseButton = new JoystickButton(controllStick, RobotMap.SECONDARY_DISPENSE_BUTTON);
+	//Button ControlCollectButton = new JoystickButton(controllStick, RobotMap.SECONDARY_COLLECT_BUTTON);
+	//Button ControlDispenseButton = new JoystickButton(controllStick, RobotMap.SECONDARY_DISPENSE_BUTTON);
 	Button ControlWinchButton = new JoystickButton(controllStick, RobotMap.SECONDARY_WINCH_BUTTON);
-	Button ControlEjectButton = new JoystickButton(controllStick, RobotMap.SECONDARY_EJECT_BUTTON);
+	Button StopButton2 = new JoystickButton(controllStick, RobotMap.SECONDARY_EJECT_BUTTON);
+	//Button ControlEjectButton = new JoystickButton(controllStick, RobotMap.SECONDARY_EJECT_BUTTON);
 
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
@@ -59,17 +64,18 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 	
 	public OI() {
-		HalfTurnButton.whenPressed(new TurnByDegreesCommand());
-		CollectButton.whileHeld(new CollectSolidFuelCommand());
-		DispenseButton.whileHeld(new DispenseSolidFuelCommand());
+		HalfTurnButton.whenPressed(new RotateByTimeCommand(2.12));
+		//CollectButton.whileHeld(new CollectSolidFuelCommand());
+		//DispenseButton.whileHeld(new DispenseSolidFuelCommand());
 		ReverseButton.toggleWhenPressed(new ReverseDriveCommand());
 		CrawlButton.toggleWhenPressed(new CrawlModeCommand());
 		WinchButton.toggleWhenPressed(new WinchCommand());
-		EjectButton.whileHeld(new EjectCommand());
+		StopButton.whileHeld(new FullStopCommand());
+		TurnButton.whenPressed(new Legacy(125, true, 0));
 
-		ControlCollectButton.whileHeld(new CollectSolidFuelCommand());
-		ControlDispenseButton.whileHeld(new DispenseSolidFuelCommand());
+		//ControlCollectButton.whileHeld(new CollectSolidFuelCommand());
+		//ControlDispenseButton.whileHeld(new DispenseSolidFuelCommand());
 		ControlWinchButton.whileHeld(new WinchCommand());
-		ControlEjectButton.whileHeld(new EjectCommand());
+		//ControlEjectButton.whileHeld(new EjectCommand());
 	}
 }

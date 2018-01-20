@@ -18,11 +18,11 @@ public class AutoLeftStay extends CommandGroup {
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
-    	
-    	addSequential(new ForwardByDistanceCommand(-(75.019 / 12) - 3));
-    	addSequential(new TurnByDegreesCommand(103.75, true));
+    	addSequential(new ForwardByDistanceCommand(-(70.5 / 12)));
+    	addSequential(new RotateByTimeCommand(.84, 1));
     	//addParallel( new ResetGyroCommand());
-    	addSequential(new ForwardByDistanceCommand(-(79.054 / 12) - 3));
+    	addSequential(new ForwardByDistanceCommand(-(86 / 12)));
+
 
         // A command group will require all of the subsystems that each member
         // would require.

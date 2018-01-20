@@ -18,8 +18,9 @@ public class GyroscopeSubsystem extends Subsystem {
 		if (MainGyro == null) {
 			return 0;
 		}
-
+		System.out.format("MainGyro %f\n", MainGyro.getAngle());
 		return MainGyro.getAngle();
+		
 	}
 }
 

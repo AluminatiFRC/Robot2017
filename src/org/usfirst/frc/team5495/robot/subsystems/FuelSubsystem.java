@@ -5,6 +5,7 @@ import org.usfirst.frc.team5495.robot.RobotMap;
 import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -23,18 +24,26 @@ public class FuelSubsystem extends Subsystem {
 	final CANTalon feedermotorA = new CANTalon(RobotMap.FEEDER_MOTOR_A);
 	final CANTalon feedermotorB = new CANTalon(RobotMap.FEEDER_MOTOR_B);
 	final DoubleSolenoid feederSolenoid = new DoubleSolenoid(RobotMap.FEEDER_PISTON_A, RobotMap.FEEDER_PISTON_B);
-	final double motorSpeed = .6;
+	final double motorSpeed = 1;
+	final double targetAngle = 150;
+	Servo ramp = new Servo(RobotMap.SERVO_PORT);
 
     public void initDefaultCommand() {
     }
     
     public void CollectFuel(){
+    	if (ramp.getAngle() > 20) {
+    		ramp.setAngle(20);
+    	}
     	feedermotorA.set(-motorSpeed);
     	feedermotorB.set(motorSpeed);
     	feederSolenoid.set(DoubleSolenoid.Value.kForward);
-    }
+    	}
     
     public void DispenseFuel(){
+    	if (ramp.getAngle() < targetAngle) {
+    		ramp.setAngle(targetAngle);
+    	}
     	feedermotorA.set(-motorSpeed);
     	feedermotorB.set(motorSpeed);
     	feederSolenoid.set(DoubleSolenoid.Value.kReverse);

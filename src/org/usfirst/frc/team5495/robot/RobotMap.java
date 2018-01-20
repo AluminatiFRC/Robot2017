@@ -35,6 +35,7 @@ public class RobotMap {
 	public static final AxisType ROTATE_AXIS = AxisType.kZ;
 	public static final int EJECT_BUTTON = 5;
 	public static final int GEAR_BUTTON = 1;
+	public static final int TURN_BUTTON = 10;
 
 	public static final int SECONDARY_COLLECT_BUTTON = 5;
 	public static final int SECONDARY_DISPENSE_BUTTON = 6;
@@ -53,6 +54,7 @@ public class RobotMap {
 	public static final int LEFT_ENCODER_SECOND = 1;
 	public static final int RIGHT_ENCODER_FIRST = 2;
 	public static final int RIGHT_ENCODER_SECOND = 3;
+	public static final int SERVO_PORT = 0;
 
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:

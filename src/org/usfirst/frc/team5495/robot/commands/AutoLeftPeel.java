@@ -19,12 +19,12 @@ public class AutoLeftPeel extends CommandGroup {
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
 
-    	addSequential(new ForwardByDistanceCommand(-(75.019 / 12)- 3));
-    	addSequential(new TurnByDegreesCommand(103.75, true));
+    	addSequential(new ForwardByDistanceCommand(-(48.0 / 12)));
+    	addSequential(new TurnByDegreesCommand(100.75, true));
     	//addParallel( new ResetGyroCommand());
-    	addSequential(new ForwardByDistanceCommand(-(79.054 / 12) - 3));
+    	addSequential(new ForwardByDistanceCommand(-(64.0 / 12)));
     	addSequential(new WaitCommand(3));
-    	addSequential(new PeelAwayCommand(120, true));
+    	addSequential(new Legacy(125, true, .75));
     	//addParallel(new ResetGyroCommand());
     	
         // A command group will require all of the subsystems that each member
